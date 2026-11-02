@@ -1,0 +1,415 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodieGo - Restaurant Menu</title>
+
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, sans-serif;
+}
+
+body {
+	background-color: #19191f;
+	color: white;
+}
+
+header {
+	background-color: #222228;
+	padding: 20px 5%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 15px;
+}
+
+.logo {
+	font-size: 28px;
+	font-weight: bold;
+	color: #ff3b75;
+}
+
+nav {
+	display: flex;
+	align-items: center;
+	gap: 25px;
+}
+
+nav a {
+	color: white;
+	text-decoration: none;
+	font-size: 15px;
+}
+
+nav a:hover {
+	color: #ff3b75;
+}
+
+.cart-link {
+	background-color: #ff3b75;
+	padding: 10px 16px;
+	border-radius: 6px;
+	font-weight: bold;
+}
+
+
+.restaurant-header {
+	width: 90%;
+	max-width: 1200px;
+	margin: 30px auto;
+	background-color: #25252d;
+	border-radius: 12px;
+	overflow: hidden;
+}
+
+.restaurant-banner {
+	height: 220px;
+	background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)),
+		url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80");
+	background-size: cover;
+	background-position: center;
+}
+
+.restaurant-info {
+	padding: 22px;
+}
+
+.restaurant-info h1 {
+	font-size: 30px;
+	margin-bottom: 12px;
+}
+
+.restaurant-info p {
+	color: #c5c5ce;
+	margin-bottom: 12px;
+	line-height: 1.6;
+}
+
+.restaurant-meta {
+	display: flex;
+	gap: 20px;
+	flex-wrap: wrap;
+	font-size: 14px;
+}
+
+.restaurant-rating {
+	background-color: #159957;
+	padding: 5px 9px;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+.menu-heading {
+	width: 90%;
+	max-width: 1200px;
+	margin: 35px auto 25px;
+}
+
+.menu-heading h2 {
+	font-size: 28px;
+	margin-bottom: 10px;
+}
+
+.menu-heading p {
+	color: #bdbdc7;
+}
+
+
+.menu-container {
+	width: 90%;
+	max-width: 1200px;
+	margin: auto;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 25px;
+}
+
+.menu-card {
+	background-color: #25252d;
+	border-radius: 12px;
+	overflow: hidden;
+	border: 1px solid #35353e;
+	transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.menu-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.food-image {
+	width: 100%;
+	height: 210px;
+	object-fit: cover;
+	display: block;
+}
+
+.menu-content {
+	padding: 18px;
+}
+
+.menu-content h3 {
+	font-size: 19px;
+	margin-bottom: 12px;
+}
+
+.desc {
+	color: #bdbdc7;
+	font-size: 14px;
+	line-height: 1.5;
+	min-height: 42px;
+	margin-bottom: 15px;
+}
+
+.menu-info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 18px;
+}
+
+.price {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.rating {
+	color: #ffc857;
+	font-size: 14px;
+}
+
+.add-btn {
+	display: block;
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ff3b75;
+	border-radius: 7px;
+	background-color: transparent;
+	color: #ff3b75;
+	font-size: 15px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.add-btn:hover {
+	background-color: #ff3b75;
+	color: white;
+}
+
+
+footer {
+	background-color: #222228;
+	color: #bdbdc7;
+	text-align: center;
+	padding: 25px;
+	margin-top: 50px;
+}
+
+@media ( max-width : 900px) {
+	.menu-container {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media ( max-width : 600px) {
+	header {
+		flex-direction: column;
+	}
+	nav {
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 15px;
+	}
+	.menu-container {
+		grid-template-columns: 1fr;
+	}
+	.restaurant-info h1 {
+		font-size: 24px;
+	}
+	.restaurant-banner {
+		height: 170px;
+	}
+	.food-image {
+		height: 220px;
+	}
+}
+</style>
+</head>
+
+<body>
+
+
+	<header>
+		<div class="logo">FoodieGo</div>
+
+		<nav>
+			<a href="home">Home</a> <a href="callRestaurantServlet">Restaurants</a>
+			<a href="login.html">Login</a> <a href="signup.html">Sign Up</a> <a
+				href="cart.jsp" class="cart-link">🛒 Cart</a>
+		</nav>
+	</header>
+
+
+	<section class="restaurant-header">
+
+		<div class="restaurant-banner"></div>
+
+		<div class="restaurant-info">
+			<h1>Burger Hub</h1>
+
+			<p>Delicious burgers, pizzas, biryani and more. Freshly prepared
+				food delivered to your door.</p>
+
+			<div class="restaurant-meta">
+				<span class="restaurant-rating">★ 4.5</span> <span>🍴
+					Burgers, Fast Food</span> <span>🕒 25-35 mins</span> <span>₹300 for
+					two</span>
+			</div>
+		</div>
+
+	</section>
+
+
+	<section class="menu-heading">
+		<h2>Explore Our Menu 🍽️</h2>
+		<p>Choose your favourite dishes and enjoy every bite!</p>
+	</section>
+
+
+	<main class="menu-container">
+
+		<!-- Cheese Burger -->
+		<div class="menu-card">
+			<img
+				src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800"
+				alt="Cheese Burger" class="food-image">
+
+			<div class="menu-content">
+				<h3>Cheese Burger</h3>
+
+				<p class="desc">Juicy grilled burger with cheese, lettuce,
+					tomato and special sauce.</p>
+
+				<div class="menu-info">
+					<span class="price">₹149</span> <span class="rating">★ 4.5</span>
+				</div>
+
+				<button class="add-btn">Add to Cart</button>
+			</div>
+		</div>
+
+
+		<div class="menu-card">
+			<img
+				src="https://images.unsplash.com/photo-1579751626657-72bc17010498?w=800"
+				alt="Margherita Pizza" class="food-image">
+
+			<div class="menu-content">
+				<h3>Margherita Pizza</h3>
+
+				<p class="desc">Classic pizza topped with mozzarella cheese,
+					tomato sauce and fresh herbs.</p>
+
+				<div class="menu-info">
+					<span class="price">₹199</span> <span class="rating">★ 4.6</span>
+				</div>
+
+				<button class="add-btn">Add to Cart</button>
+			</div>
+		</div>
+
+
+		<div class="menu-card">
+			<img
+				src="https://images.unsplash.com/photo-1563379091339-03246963d51a?w=800"
+				alt="Chicken Biryani" class="food-image">
+
+			<div class="menu-content">
+				<h3>Chicken Biryani</h3>
+
+				<p class="desc">Aromatic basmati rice cooked with tender chicken
+					and authentic Indian spices.</p>
+
+				<div class="menu-info">
+					<span class="price">₹249</span> <span class="rating">★ 4.7</span>
+				</div>
+
+				<button class="add-btn">Add to Cart</button>
+			</div>
+		</div>
+
+
+		<div class="menu-card">
+			<img
+				src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800"
+				alt="French Fries" class="food-image">
+
+			<div class="menu-content">
+				<h3>French Fries</h3>
+
+				<p class="desc">Crispy golden potato fries seasoned with
+					delicious herbs and spices.</p>
+
+				<div class="menu-info">
+					<span class="price">₹99</span> <span class="rating">★ 4.3</span>
+				</div>
+
+				<button class="add-btn">Add to Cart</button>
+			</div>
+		</div>
+
+
+		<div class="menu-card">
+			<img
+				src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=800"
+				alt="Grilled Chicken" class="food-image">
+
+			<div class="menu-content">
+				<h3>Grilled Chicken</h3>
+
+				<p class="desc">Tender grilled chicken marinated with aromatic
+					spices and herbs.</p>
+
+				<div class="menu-info">
+					<span class="price">₹279</span> <span class="rating">★ 4.5</span>
+				</div>
+
+				<button class="add-btn">Add to Cart</button>
+			</div>
+		</div>
+
+
+		<div class="menu-card">
+			<img
+				src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=800"
+				alt="Paneer Tikka" class="food-image">
+
+			<div class="menu-content">
+				<h3>Paneer Tikka</h3>
+
+				<p class="desc">Soft paneer cubes marinated in spices and
+					grilled to perfection.</p>
+
+				<div class="menu-info">
+					<span class="price">₹179</span> <span class="rating">★ 4.4</span>
+				</div>
+
+				<button class="add-btn">Add to Cart</button>
+			</div>
+		</div>
+
+	</main>
+
+
+	<footer>
+		<p>© 2026 FoodieGo | Delicious Food Delivered to Your Door</p>
+	</footer>
+
+</body>
+</html>

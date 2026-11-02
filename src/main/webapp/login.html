@@ -1,0 +1,139 @@
+
+<style>
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background: #19191f;
+	color: white;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.login-container {
+	width: 350px;
+	padding: 35px;
+	background: #222228;
+	border-radius: 12px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.logo {
+	text-align: center;
+	font-size: 32px;
+	font-weight: bold;
+	color: #ff3b75;
+	margin-bottom: 12px;
+}
+
+.logo span {
+	color: white;
+}
+
+.subtitle {
+	text-align: center;
+	color: #bbbbbb;
+	margin-bottom: 30px;
+	font-size: 14px;
+}
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+.form-group label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: bold;
+}
+
+.form-group input {
+	width: 100%;
+	padding: 12px;
+	box-sizing: border-box;
+	background: #19191f;
+	border: 1px solid #41414c;
+	border-radius: 6px;
+	color: white;
+	outline: none;
+}
+
+.form-group input:focus {
+	border-color: #ff3b75;
+}
+
+.login-btn {
+	width: 100%;
+	padding: 13px;
+	background: #ff3b75;
+	color: white;
+	border: none;
+	border-radius: 6px;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.login-btn:hover {
+	background: #e92d65;
+}
+
+.register-link {
+	text-align: center;
+	margin-top: 22px;
+	color: #cccccc;
+	font-size: 14px;
+}
+
+.register-link a {
+	color: #ff3b75;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+@media ( max-width : 480px) {
+	.login-container {
+		width: calc(100% - 60px);
+		padding: 25px;
+	}
+}
+</style>
+
+<body>
+
+	<div class="login-container">
+
+		<div class="logo">
+			Food<span>ieGo</span>
+		</div>
+
+		<p class="subtitle">Login to continue ordering your favorite food
+		</p>
+
+		<form action="callLoginServlet" method="post" autocomplete="off">
+
+			<div class="form-group">
+				<label for="name">Name <span style="color: red;">*</span></label> <input
+					type="text" id="name" name="name" placeholder="Enter your name"
+					autocomplete="off" required>
+			</div>
+
+			<div class="form-group">
+				<label for="password">Password <span style="color: red;">*</span></label>
+				<input type="password" id="password" name="password"
+					placeholder="Enter your password" autocomplete="new-password"
+					required>
+			</div>
+
+			<button type="submit" class="login-btn">Login</button>
+
+		</form>
+
+		<div class="register-link">
+			Don't have an account? <a href="registration.html">Register</a>
+		</div>
+
+	</div>
+
+</body>

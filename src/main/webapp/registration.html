@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodieGo - Registration</title>
+
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, sans-serif;
+}
+
+body {
+	background-color: #19191f;
+	color: white;
+}
+
+
+header {
+	background-color: #222228;
+	padding: 20px 4%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logo {
+	color: #ff3b75;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+nav {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+nav a {
+	color: white;
+	text-decoration: none;
+	font-size: 15px;
+	transition: color 0.3s;
+}
+
+nav a:hover {
+	color: #ff3b75;
+}
+
+
+.heading {
+	text-align: center;
+	padding: 30px 15px;
+	background-color: #292932;
+}
+
+.heading h1 {
+	color: #ff3b75;
+	margin-bottom: 10px;
+}
+
+.heading p {
+	color: #cccccc;
+}
+
+
+.container {
+	display: flex;
+	justify-content: center;
+	padding: 35px 15px;
+}
+
+.register-card {
+	background-color: #222228;
+	width: 100%;
+	max-width: 500px;
+	padding: 30px;
+	border-radius: 12px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.register-card h2 {
+	text-align: center;
+	color: #ff3b75;
+	margin-bottom: 10px;
+	font-size: 27px;
+}
+
+.register-card .subtitle {
+	text-align: center;
+	color: #bbbbbb;
+	font-size: 14px;
+	margin-bottom: 25px;
+}
+
+.form-group {
+	margin-bottom: 18px;
+}
+
+.form-group label {
+	display: block;
+	margin-bottom: 8px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #41414c;
+	border-radius: 6px;
+	background-color: #19191f;
+	color: white;
+	font-size: 14px;
+	outline: none;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus
+	{
+	border-color: #ff3b75;
+}
+
+.form-group input::placeholder, .form-group textarea::placeholder {
+	color: #888892;
+}
+
+.form-group select option {
+	background-color: #222228;
+	color: white;
+}
+
+.register-btn {
+	width: 100%;
+	padding: 13px;
+	background-color: #ff3b75;
+	color: white;
+	border: none;
+	border-radius: 6px;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.register-btn:hover {
+	background-color: #e92d65;
+}
+
+.login-link {
+	text-align: center;
+	margin-top: 20px;
+	color: #cccccc;
+	font-size: 14px;
+}
+
+.login-link a {
+	color: #ff3b75;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.login-link a:hover {
+	text-decoration: underline;
+}
+
+.password-wrapper {
+	position: relative;
+}
+
+.password-wrapper input {
+	padding-right: 45px;
+}
+
+.toggle-password {
+	position: absolute;
+	right: 12px;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+	color: #888892;
+	font-size: 18px;
+	user-select: none;
+}
+
+input[type="password"]::-ms-reveal, input[type="password"]::-ms-clear {
+	display: none;
+}
+
+
+input::-webkit-credentials-auto-fill-button {
+	visibility: hidden;
+	display: none !important;
+}
+
+
+footer {
+	background-color: #222228;
+	color: #bbbbbb;
+	text-align: center;
+	padding: 22px;
+}
+
+
+@media ( max-width : 600px) {
+	header {
+		flex-direction: column;
+		gap: 15px;
+	}
+	nav {
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 15px;
+	}
+	.register-card {
+		padding: 22px;
+	}
+}
+</style>
+</head>
+
+<body>
+
+	<header>
+		<div class="logo">FoodieGo</div>
+
+		<nav>
+
+			<a href="http://localhost:8080/food_app/home">Home</a> <a
+				href="callRestaurantServlet">Restaurants</a> <a href="login.html">Login</a>
+			<a href="registration.html">Sign Up</a>
+		</nav>
+	</header>
+
+	<section class="heading">
+		<h1>Create Your Account</h1>
+		<p>Join FoodieGo and enjoy delicious food delivered to your door</p>
+	</section>
+
+	<main class="container">
+
+		<div class="register-card">
+
+			<h2>FoodieGo</h2>
+			<p class="subtitle">Enter your details to create an account</p>
+
+			<form action="callRegisterServlet" method="post" autocomplete="off">
+
+				<div class="form-group">
+					<label for="userName">Full Name <span style="color: red;">*</span></label>
+					<input type="text" id="userName" name="userName"
+						placeholder="Enter your full name" required>
+				</div>
+
+				<div class="form-group">
+					<label for="email">Email Address <span style="color: red;">*</span></label>
+					<input type="email" id="email" name="email"
+						placeholder="Enter your email address" autocomplete="off" required>
+				</div>
+
+
+
+				<div class="form-group">
+					<label for="password">Password <span style="color: red;">*</span></label>
+					<div class="password-wrapper">
+						<input type="password" id="password" name="password"
+							placeholder="Create a password" minlength="8"
+							autocomplete="new-password" required> <span
+							class="toggle-password"
+							onclick="togglePassword('password', this)">👁</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="confirmPassword">Confirm Password <span
+						style="color: red;">*</span></label>
+					<div class="password-wrapper">
+						<input type="password" id="confirmPassword" name="confirmPassword"
+							placeholder="Re-enter your password" minlength="8"
+							autocomplete="new-password" required> <span
+							class="toggle-password"
+							onclick="togglePassword('confirmPassword', this)">👁</span>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label for="address">Address <span style="color: red;">*</span></label>
+					<textarea id="address" name="address" rows="3"
+						placeholder="Enter your delivery address" required></textarea>
+				</div>
+
+				<div class="form-group">
+					<label for="role">Select Role <span style="color: red;">*</span></label>
+					<select id="role" name="role" required>
+						<option value="" disabled selected>Select your role</option>
+						<option value="CUSTOMER">Customer</option>
+						<option value="ADMIN">Admin</option>
+						<option value="RESTAURANTOWNER">restaurantOwner</option>
+					</select>
+				</div>
+
+				<button type="submit" class="register-btn">Create Account</button>
+
+			</form>
+
+			<div class="login-link">
+				Already have an account? <a href="login.html">Login</a>
+			</div>
+
+		</div>
+
+	</main>
+
+
+	<script>
+  
+
+function togglePassword(inputId, eyeIcon) {
+    const passwordInput = document.getElementById(inputId);
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.textContent = "🙈";
+    } else {
+        passwordInput.type = "password";
+        eyeIcon.textContent = "👁";
+    }
+}
+
+
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function(event) {
+
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (password !== confirmPassword) {
+            event.preventDefault();
+            alert("Password and Confirm Password do not match!");
+        }
+
+    });
+</script>
+
+
+	<footer> © 2026 FoodieGo | Delicious Food Delivered to Your
+		Door </footer>
+
+</body>
+</html>
